@@ -783,6 +783,13 @@ class App:
 def main():
     root = TkinterDnD.Tk() if DND_OK else tk.Tk()
     App(root)
+    footer_label = tk.Label(
+    root,
+    text="与 AI 对话前，请先复制提示词，并粘贴到AI对话框。",
+    fg="red",
+    font=("微软雅黑", 9)
+    )
+    footer_label.pack(side="bottom", pady=5)
     root.mainloop()
 
 
