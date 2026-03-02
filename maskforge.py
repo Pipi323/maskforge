@@ -35,6 +35,130 @@ except ImportError:
 MAPPING_SUFFIX = "_mask_mapping.json"
 SUPPORTED_EXT  = {".docx", ".pptx", ".xlsx", ".txt"}
 
+# ── 中英文语言包 ──
+LANG = {
+    "zh": {
+        "title":            "文档脱敏",
+        "subtitle":         "本地处理  ·  数据不上传",
+        "badge_empty":      "映射：空",
+        "badge_n":          "映射：{n} 条",
+        "sensitive_title":  "敏感词",
+        "sensitive_hint":   "多个词请用逗号分隔（支持中文逗号）",
+        "sensitive_ph":     "例：中国，1，2，3，0，政府",
+        "enc_zone":         "加密区",
+        "dec_zone":         "解密区",
+        "start_enc":        "开始加密",
+        "start_dec":        "开始解密",
+        "clear_map":        "清空映射",
+        "copy_prompt":      "复制AI提示词",
+        "del_json_opt":     "解密成功后自动删除映射文件（JSON）",
+        "ready":            "就绪",
+        "lang_btn":         "EN",
+        "add_file":         "添加文件",
+        "add_folder":       "添加文件夹",
+        "clear":            "清空",
+        "load_json":        "载入JSON映射",
+        "hint_enc":         "将文件拖入此处，或点击下方按钮选择",
+        "hint_dec":         "将文件或 JSON 映射拖入此处",
+        "footer":           "与 AI 对话前，请先复制提示词，并粘贴到AI对话框。",
+        "dep_title":        "缺少依赖",
+        "dep_body":         "以下库未安装，对应功能不可用：\n\n{libs}\n\n安装：\npip install python-docx python-pptx openpyxl tkinterdnd2",
+        "warn_no_file_enc": "请先在加密区添加文件。",
+        "warn_no_file_dec": "请先在解密区添加文件。",
+        "warn_no_words":    "请填写敏感词。",
+        "warn_no_map_title":"未找到映射文件",
+        "warn_no_map_body": "未在文件目录找到映射文件。\n\n点击「确定」手动选择 JSON 映射文件。",
+        "processing":       "处理中...",
+        "enc_done":         "加密",
+        "dec_done":         "解密",
+        "success":          "成功",
+        "fail":             "失败",
+        "map_loaded":       "映射已载入，共 {n} 条",
+        "map_load_ok_title":"载入成功",
+        "map_load_ok_body": "映射文件已加载！共 {n} 条记录。\n现在可将文件拖入解密区执行解密。",
+        "map_cleared":      "映射已清空",
+        "map_clear_title":  "已清空",
+        "map_clear_body":   "映射关系已清空，可开始新任务。",
+        "copied_title":     "已复制到剪贴板",
+        "copied_body":      "使用方法：\n\n① 在 AI 对话框最前面粘贴此提示词\n② 再粘贴 / 上传脱敏后的文件内容\n③ AI 将原样保留所有 [MASK_XXXXXXXX] 标记\n\n收到 AI 回传内容后，保存为文件，\n拖入解密区一键还原。",
+        "auto_load_map":    "自动载入映射：{name}",
+        "map_deleted":      "映射文件已删除：{names}",
+        "suggest_prompt":   "\n建议：发给 AI 前，点击「复制AI提示词」，\n将提示词粘贴在对话最前面，AI 会保留所有占位符不变。\n本次映射已保存在内存，收到回传文件后直接拖入解密区即可。",
+        "all_ok":           " 全部成功",
+        "partial_fail":     " 完成（含失败项）",
+        "ok_n":             "成功 {n} 个：",
+        "fail_n":           "失败 {n} 个：",
+        "pick_file_title":  "选择文件",
+        "pick_file_types":  [("支持的文件", "*.docx *.pptx *.xlsx *.txt"), ("所有文件", "*.*")],
+        "pick_dir_title":   "选择文件夹",
+        "pick_json_title":  "选择 JSON 映射文件",
+        "pick_map_title":   "选择映射文件",
+        "load_fail":        "载入失败",
+        "error":            "错误",
+        "tip":              "提示",
+    },
+    "en": {
+        "title":            "Doc Mask",
+        "subtitle":         "Local Only  ·  No Upload",
+        "badge_empty":      "Map: empty",
+        "badge_n":          "Map: {n}",
+        "sensitive_title":  "Sensitive Words",
+        "sensitive_hint":   "Separate multiple words with commas",
+        "sensitive_ph":     "e.g. China, 1, 2, 3, gov",
+        "enc_zone":         "Encrypt Zone",
+        "dec_zone":         "Decrypt Zone",
+        "start_enc":        "Start Encrypt",
+        "start_dec":        "Start Decrypt",
+        "clear_map":        "Clear Map",
+        "copy_prompt":      "Copy AI Prompt",
+        "del_json_opt":     "Auto-delete mapping file (JSON) after successful decryption",
+        "ready":            "Ready",
+        "lang_btn":         "中",
+        "add_file":         "Add File",
+        "add_folder":       "Add Folder",
+        "clear":            "Clear",
+        "load_json":        "Load JSON Map",
+        "hint_enc":         "Drag files here or click button below",
+        "hint_dec":         "Drag files or JSON map here",
+        "footer":           "Before chatting with AI, copy and paste the prompt first.",
+        "dep_title":        "Missing Dependencies",
+        "dep_body":         "The following libraries are not installed:\n\n{libs}\n\nInstall:\npip install python-docx python-pptx openpyxl tkinterdnd2",
+        "warn_no_file_enc": "Please add files to the Encrypt Zone first.",
+        "warn_no_file_dec": "Please add files to the Decrypt Zone first.",
+        "warn_no_words":    "Please enter sensitive words.",
+        "warn_no_map_title":"Mapping File Not Found",
+        "warn_no_map_body": "No mapping file found in file directory.\n\nClick OK to manually select a JSON mapping file.",
+        "processing":       "Processing...",
+        "enc_done":         "Encryption",
+        "dec_done":         "Decryption",
+        "success":          "succeeded",
+        "fail":             "failed",
+        "map_loaded":       "Map loaded: {n} entries",
+        "map_load_ok_title":"Load Successful",
+        "map_load_ok_body": "Mapping loaded! {n} entries.\nNow drag files to Decrypt Zone.",
+        "map_cleared":      "Map cleared",
+        "map_clear_title":  "Cleared",
+        "map_clear_body":   "Mapping cleared. Ready for a new task.",
+        "copied_title":     "Copied to Clipboard",
+        "copied_body":      "How to use:\n\n① Paste this prompt at the start of your AI chat\n② Then paste / upload the masked file content\n③ AI will keep all [MASK_XXXXXXXX] tags intact\n\nAfter receiving the AI reply, save as a file and drag into Decrypt Zone.",
+        "auto_load_map":    "Auto-loaded map: {name}",
+        "map_deleted":      "Map file deleted: {names}",
+        "suggest_prompt":   "\nTip: Before sending to AI, click 'Copy AI Prompt' and paste it at the start of the conversation. The map is saved in memory — drag the returned file into Decrypt Zone to restore.",
+        "all_ok":           " All Succeeded",
+        "partial_fail":     " Completed (with failures)",
+        "ok_n":             "Succeeded {n}:",
+        "fail_n":           "Failed {n}:",
+        "pick_file_title":  "Select Files",
+        "pick_file_types":  [("Supported Files", "*.docx *.pptx *.xlsx *.txt"), ("All Files", "*.*")],
+        "pick_dir_title":   "Select Folder",
+        "pick_json_title":  "Select JSON Mapping File",
+        "pick_map_title":   "Select Mapping File",
+        "load_fail":        "Load Failed",
+        "error":            "Error",
+        "tip":              "Notice",
+    },
+}
+
 AI_PROMPT = (
     "【重要指令】本文档中形如 [MASK_XXXXXXXX] 的标记是敏感信息占位符，"
     "由脱敏系统自动生成。处理本文档时必须遵守：\n"
@@ -256,26 +380,30 @@ class FileList(tk.Frame):
     """
 
     def __init__(self, master, accent, mode, scrubber,
-                 on_json=None, **kw):
+                 on_json=None, lang_var=None, **kw):
         super().__init__(master, bg=CARD, **kw)
         self.accent   = accent
         self.mode     = mode        # "enc" | "dec"
         self.scrubber = scrubber
         self.on_json  = on_json
+        self.lang_var = lang_var    # StringVar "zh"/"en"
         self.files    = []
         self._build()
         if DND_OK:
             self._bind_dnd()
 
+    def _t(self, key):
+        lang = self.lang_var.get() if self.lang_var else "zh"
+        return LANG[lang][key]
+
     def _build(self):
         # 拖放提示
         hint_bg = self._tint(self.accent, 0.92)
+        hint_key = "hint_enc" if self.mode == "enc" else "hint_dec"
         self.hint = tk.Label(
             self, bg=hint_bg, fg=self.accent, cursor="hand2",
             font=(FONT, 9),
-            text=("将文件拖入此处，或点击下方按钮选择"
-                  if self.mode == "enc"
-                  else "将文件或 JSON 映射拖入此处")
+            text=self._t(hint_key)
         )
         self.hint.pack(fill="x", ipady=10)
         self.hint.bind("<Button-1>", lambda e: self._pick())
@@ -305,31 +433,77 @@ class FileList(tk.Frame):
         self.lb.bind("<Button-3>",  self._ctx)
 
         # 按钮行（全用 pack）
-        br = tk.Frame(self, bg=CARD)
-        br.pack(fill="x", pady=(0, 4))
+        self.br = tk.Frame(self, bg=CARD)
+        self.br.pack(fill="x", pady=(0, 4))
 
-        self._mkbtn(br, "添加文件",   self.accent,  self._pick).pack(side="left", padx=(4, 3))
-        self._mkbtn(br, "添加文件夹", self.accent,  self._pick_dir).pack(side="left", padx=(0, 3))
-        self._mkbtn(br, "清空",       "#AEAEB2",    self._clear).pack(side="left")
+        self.btn_add_file   = self._mkbtn(self.br, self._t("add_file"),   self.accent,  self._pick)
+        self.btn_add_folder = self._mkbtn(self.br, self._t("add_folder"), self.accent,  self._pick_dir)
+        self.btn_clear_list = self._mkbtn(self.br, self._t("clear"),      "#AEAEB2",    self._clear)
+        self.btn_add_file.pack(side="left", padx=(4, 3))
+        self.btn_add_folder.pack(side="left", padx=(0, 3))
+        self.btn_clear_list.pack(side="left")
 
+        self.btn_load_json = None
         if self.mode == "dec":
-            self._mkbtn(br, "载入JSON映射", PURPLE, self._pick_json).pack(side="right", padx=4)
+            self.btn_load_json = self._mkbtn(self.br, self._t("load_json"), PURPLE, self._pick_json)
+            self.btn_load_json.pack(side="right", padx=4)
 
-        self.cnt = tk.Label(br, text="0 个", font=(FONT, 8),
-                            bg=CARD, fg=T2)
+        self.cnt = tk.Label(self.br, text="0 " + ("个" if (self.lang_var and self.lang_var.get()=="zh") else "files"),
+                            font=(FONT, 8), bg=CARD, fg=T2)
+        self.cnt.pack(side="right", padx=6)
+
+    def update_lang(self):
+        """切换语言时刷新所有文字"""
+        hint_key = "hint_enc" if self.mode == "enc" else "hint_dec"
+        self.hint.config(text=self._t(hint_key))
+        # 重建按钮（Canvas 无法直接改文字，销毁重建）
+        for w in self.br.winfo_children():
+            w.destroy()
+        self.btn_add_file   = self._mkbtn(self.br, self._t("add_file"),   self.accent,  self._pick)
+        self.btn_add_folder = self._mkbtn(self.br, self._t("add_folder"), self.accent,  self._pick_dir)
+        self.btn_clear_list = self._mkbtn(self.br, self._t("clear"),      "#AEAEB2",    self._clear)
+        self.btn_add_file.pack(side="left", padx=(4, 3))
+        self.btn_add_folder.pack(side="left", padx=(0, 3))
+        self.btn_clear_list.pack(side="left")
+        if self.mode == "dec":
+            self.btn_load_json = self._mkbtn(self.br, self._t("load_json"), PURPLE, self._pick_json)
+            self.btn_load_json.pack(side="right", padx=4)
+        n = len(self.files)
+        suffix = "个" if self._t("lang_btn") == "EN" else "files"
+        self.cnt = tk.Label(self.br, text=str(n) + " " + suffix,
+                            font=(FONT, 8), bg=CARD, fg=T2)
         self.cnt.pack(side="right", padx=6)
 
     def _mkbtn(self, p, txt, col, cmd):
-        return tk.Button(
-            p, text=txt, font=(FONT, 8),
-            bg=col, fg="white",
-            activebackground=self._tint(col, 0.8),
-            activeforeground="white",
-            relief="flat", bd=0,
-            padx=8, pady=4,
-            cursor="hand2",
-            command=cmd
-        )
+        import tkinter.font as tkfont
+        f = tkfont.Font(family=FONT, size=8)
+        tw = f.measure(txt)
+        th = f.metrics("linespace")
+        padx, pady, radius = 8, 4, 8
+        w = tw + padx * 2
+        h = th + pady * 2
+        hover = self._tint(col, 0.82)
+
+        cv = tk.Canvas(p, width=w, height=h,
+                       bg=p["bg"], highlightthickness=0, cursor="hand2")
+
+        def _draw(c):
+            cv.delete("all")
+            r = radius
+            cv.create_arc(0, 0, 2*r, 2*r, start=90, extent=90, fill=c, outline=c)
+            cv.create_arc(w-2*r, 0, w, 2*r, start=0, extent=90, fill=c, outline=c)
+            cv.create_arc(0, h-2*r, 2*r, h, start=180, extent=90, fill=c, outline=c)
+            cv.create_arc(w-2*r, h-2*r, w, h, start=270, extent=90, fill=c, outline=c)
+            cv.create_rectangle(r, 0, w-r, h, fill=c, outline=c)
+            cv.create_rectangle(0, r, w, h-r, fill=c, outline=c)
+            cv.create_text(w//2, h//2, text=txt, fill="white",
+                           font=(FONT, 8))
+
+        _draw(col)
+        cv.bind("<Button-1>", lambda e: cmd())
+        cv.bind("<Enter>",    lambda e: _draw(hover))
+        cv.bind("<Leave>",    lambda e: _draw(col))
+        return cv
 
     @staticmethod
     def _tint(hex_c, factor):
@@ -365,23 +539,22 @@ class FileList(tk.Frame):
     # ── 文件操作 ──
     def _pick(self):
         ps = filedialog.askopenfilenames(
-            title="选择文件",
-            filetypes=[("支持的文件", "*.docx *.pptx *.xlsx *.txt"),
-                       ("所有文件", "*.*")]
+            title=self._t("pick_file_title"),
+            filetypes=self._t("pick_file_types")
         )
         for p in ps: self._add(p)
         self._refresh()
 
     def _pick_dir(self):
-        d = filedialog.askdirectory(title="选择文件夹")
+        d = filedialog.askdirectory(title=self._t("pick_dir_title"))
         if d:
             self._scan_dir(d)
             self._refresh()
 
     def _pick_json(self):
         p = filedialog.askopenfilename(
-            title="选择 JSON 映射文件",
-            filetypes=[("JSON", "*.json"), ("所有文件", "*.*")]
+            title=self._t("pick_json_title"),
+            filetypes=[("JSON", "*.json"), ("All Files" if self._t("lang_btn")=="中" else "所有文件", "*.*")]
         )
         if p: self._load_json(p)
 
@@ -392,7 +565,7 @@ class FileList(tk.Frame):
             if self.on_json:
                 self.on_json(n, path)
         except Exception as e:
-            messagebox.showerror("载入失败", str(e))
+            messagebox.showerror(self._t("load_fail"), str(e))
 
     def _scan_dir(self, d):
         for fn in os.listdir(d):
@@ -414,8 +587,8 @@ class FileList(tk.Frame):
 
     def _ctx(self, ev):
         m = tk.Menu(self, tearoff=0)
-        m.add_command(label="删除选中", command=self._del)
-        m.add_command(label="清空列表", command=self._clear)
+        m.add_command(label="删除选中" if self._t("lang_btn")=="EN" else "Remove Selected", command=self._del)
+        m.add_command(label="清空列表" if self._t("lang_btn")=="EN" else "Clear List", command=self._clear)
         m.tk_popup(ev.x_root, ev.y_root)
 
     def _clear(self):
@@ -424,7 +597,8 @@ class FileList(tk.Frame):
         self._refresh()
 
     def _refresh(self):
-        self.cnt.config(text=str(len(self.files)) + " 个")
+        suffix = "个" if self._t("lang_btn") == "EN" else "files"
+        self.cnt.config(text=str(len(self.files)) + " " + suffix)
 
 
 # ==============================================================================
@@ -437,10 +611,79 @@ class App:
         self.root     = root
         self.root.title("文档脱敏")
         self.root.configure(bg=BG)
-        self.root.minsize(600, 580)
+        self.root.minsize(640, 600)
         self.scrubber = Scrubber()
+        self.lang     = tk.StringVar(value="zh")   # "zh" | "en"
+        self._ui_refs = {}   # 存储需要动态更新的控件引用
         self._build()
         self._check_deps()
+
+    def _t(self, key, **kw):
+        s = LANG[self.lang.get()][key]
+        return s.format(**kw) if kw else s
+
+    # ── 语言切换 ──
+    def _toggle_lang(self):
+        self.lang.set("en" if self.lang.get() == "zh" else "zh")
+        self._refresh_lang()
+
+    def _refresh_lang(self):
+        r = self._ui_refs
+        self.root.title(self._t("title"))
+        r["lbl_title"].config(text=self._t("title"))
+        r["lbl_subtitle"].config(text=self._t("subtitle"))
+        r["lbl_sensitive"].config(text=self._t("sensitive_title"))
+        r["lbl_sensitive_hint"].config(text=self._t("sensitive_hint"))
+        r["lang_btn"].config(text=self._t("lang_btn"))
+        r["chk_del"].config(text=self._t("del_json_opt"))
+        r["status_lbl"].config(text=self._t("ready"))
+        r["footer_lbl"].config(text=self._t("footer"))
+        # 更新占位符
+        cur = self.word_box.get("1.0", tk.END).strip()
+        old_ph = LANG["en"]["sensitive_ph"] if self.lang.get() == "zh" else LANG["zh"]["sensitive_ph"]
+        if cur == old_ph or cur == "":
+            self.word_box.delete("1.0", tk.END)
+            self.word_box.insert("1.0", self._t("sensitive_ph"))
+            self.word_box.config(fg=T2)
+            self._ph = self._t("sensitive_ph")
+        else:
+            self._ph = self._t("sensitive_ph")
+        # 更新区域标签
+        self._update_section_label(r["enc_zone_dot"], r["enc_zone_lbl"], "enc_zone")
+        self._update_section_label(r["dec_zone_dot"], r["dec_zone_lbl"], "dec_zone")
+        # 更新 FileList 按钮
+        self.enc.lang_var = self.lang
+        self.dec.lang_var = self.lang
+        self.enc.update_lang()
+        self.dec.update_lang()
+        # 更新操作按钮（Canvas 需重建）
+        self._rebuild_action_btns()
+        # 更新 badge
+        self._upd_badge()
+
+    def _update_section_label(self, dot_canvas, lbl, key):
+        lbl.config(text=self._t(key))
+
+    def _rebuild_action_btns(self):
+        r = self._ui_refs
+        # 加密按钮
+        for w in r["enc_btn_row"].winfo_children(): w.destroy()
+        self._rndbtn(r["enc_btn_row"], self._t("start_enc"), ORANGE,
+                     lambda: self._run("enc")).pack(side="left", padx=(0, 6))
+        # 解密按钮
+        for w in r["dec_btn_row"].winfo_children(): w.destroy()
+        self._rndbtn(r["dec_btn_row"], self._t("start_dec"), BLUE,
+                     lambda: self._run("dec")).pack(side="left", padx=(0, 6))
+        self._rndbtn(r["dec_btn_row"], self._t("clear_map"), "#AEAEB2",
+                     self._clear_map).pack(side="left")
+        # 复制AI提示词按钮
+        self._rebuild_prompt_btn()
+
+    def _rebuild_prompt_btn(self):
+        r = self._ui_refs
+        frame = r["prompt_btn_frame"]
+        for w in frame.winfo_children(): w.destroy()
+        self._rndbtn_fullwidth(frame, self._t("copy_prompt"), PURPLE, self._copy_prompt)
 
     # ── 依赖检查 ──
     def _check_deps(self):
@@ -448,17 +691,16 @@ class App:
         if not DOCX_OK: miss.append("python-docx")
         if not PPTX_OK: miss.append("python-pptx")
         if not XLSX_OK: miss.append("openpyxl")
-        if not DND_OK:  miss.append("tkinterdnd2（拖拽）")
+        if not DND_OK:  miss.append("tkinterdnd2" + ("（拖拽）" if self.lang.get()=="zh" else " (drag & drop)"))
         if miss:
             messagebox.showwarning(
-                "缺少依赖",
-                "以下库未安装，对应功能不可用：\n\n" +
-                "\n".join("  · " + m for m in miss) +
-                "\n\n安装：\npip install python-docx python-pptx openpyxl tkinterdnd2"
+                self._t("dep_title"),
+                self._t("dep_body", libs="\n".join("  · " + m for m in miss))
             )
 
     # ── 构建界面（全部 pack）──
     def _build(self):
+        r = self._ui_refs
         wrap = tk.Frame(self.root, bg=BG)
         wrap.pack(fill="both", expand=True, padx=20, pady=20)
 
@@ -466,12 +708,28 @@ class App:
         row0 = tk.Frame(wrap, bg=BG)
         row0.pack(fill="x", pady=(0, 14))
 
-        tk.Label(row0, text="文档脱敏", font=(FONT, 18, "bold"),
-                 bg=BG, fg=T1).pack(side="left")
-        tk.Label(row0, text="本地处理  ·  数据不上传",
-                 font=(FONT, 9), bg=BG, fg=T2).pack(side="left", padx=12, pady=4)
+        r["lbl_title"] = tk.Label(row0, text=self._t("title"),
+                                  font=(FONT, 18, "bold"), bg=BG, fg=T1)
+        r["lbl_title"].pack(side="left")
 
-        self.badge = tk.Label(row0, text="映射：空",
+        r["lbl_subtitle"] = tk.Label(row0, text=self._t("subtitle"),
+                                     font=(FONT, 9), bg=BG, fg=T2)
+        r["lbl_subtitle"].pack(side="left", padx=12, pady=4)
+
+        # 右上角：语言切换按钮 + badge
+        r["lang_btn"] = tk.Button(
+            row0, text=self._t("lang_btn"),
+            font=(FONT, 8, "bold"),
+            bg=BLUE, fg="white",
+            activebackground=FileList._tint(BLUE, 0.82),
+            activeforeground="white",
+            relief="flat", bd=0, padx=10, pady=3,
+            cursor="hand2",
+            command=self._toggle_lang
+        )
+        r["lang_btn"].pack(side="right", padx=(6, 0))
+
+        self.badge = tk.Label(row0, text=self._t("badge_empty"),
                               font=(FONT, 8), bg="#E5E5EA", fg=T2,
                               padx=8, pady=2)
         self.badge.pack(side="right")
@@ -484,10 +742,13 @@ class App:
         wi = tk.Frame(wc, bg=CARD)
         wi.pack(fill="x", padx=14, pady=10)
 
-        tk.Label(wi, text="敏感词", font=(FONT, 10, "bold"),
-                 bg=CARD, fg=T1).pack(anchor="w")
-        tk.Label(wi, text="多个词请用逗号分隔（支持中文逗号）",
-                 font=(FONT, 8), bg=CARD, fg=T2).pack(anchor="w", pady=(1, 5))
+        r["lbl_sensitive"] = tk.Label(wi, text=self._t("sensitive_title"),
+                                      font=(FONT, 10, "bold"), bg=CARD, fg=T1)
+        r["lbl_sensitive"].pack(anchor="w")
+
+        r["lbl_sensitive_hint"] = tk.Label(wi, text=self._t("sensitive_hint"),
+                                           font=(FONT, 8), bg=CARD, fg=T2)
+        r["lbl_sensitive_hint"].pack(anchor="w", pady=(1, 5))
 
         self.word_box = tk.Text(
             wi, height=2, font=(FONT, 10),
@@ -499,77 +760,92 @@ class App:
             highlightthickness=1
         )
         self.word_box.pack(fill="x", ipady=5)
-        self._ph = "例：中国，1，2，3，0，政府"
+        self._ph = self._t("sensitive_ph")
         self.word_box.insert("1.0", self._ph)
         self.word_box.config(fg=T2)
         self.word_box.bind("<FocusIn>",  self._wi)
         self.word_box.bind("<FocusOut>", self._wo)
 
-        # ── 双列文件区（用两个并排 Frame，全用 pack）──
+        # ── 双列文件区：使用 grid 确保等宽 ──
         cols = tk.Frame(wrap, bg=BG)
         cols.pack(fill="both", expand=True, pady=(0, 12))
+        cols.columnconfigure(0, weight=1, uniform="col")
+        cols.columnconfigure(1, weight=1, uniform="col")
+        cols.rowconfigure(0, weight=1)
 
         # 左列：加密区
         left = tk.Frame(cols, bg=BG)
-        left.pack(side="left", fill="both", expand=True, padx=(0, 6))
+        left.grid(row=0, column=0, sticky="nsew", padx=(0, 6))
 
-        self._section_label(left, "加密区", ORANGE)
-        enc_card = tk.Frame(left, bg=CARD, highlightbackground=BORDER,
-                            highlightthickness=1)
+        enc_lbl_frame = tk.Frame(left, bg=BG)
+        enc_lbl_frame.pack(fill="x", pady=(0, 5))
+        enc_dot = tk.Canvas(enc_lbl_frame, width=8, height=8, bg=BG, highlightthickness=0)
+        enc_dot.pack(side="left", pady=1)
+        enc_dot.create_oval(1, 1, 7, 7, fill=ORANGE, outline="")
+        r["enc_zone_dot"] = enc_dot
+        r["enc_zone_lbl"] = tk.Label(enc_lbl_frame, text=self._t("enc_zone"),
+                                     font=(FONT, 10, "bold"), bg=BG, fg=T1)
+        r["enc_zone_lbl"].pack(side="left", padx=5)
+
+        enc_card = tk.Frame(left, bg=CARD, highlightbackground=BORDER, highlightthickness=1)
         enc_card.pack(fill="both", expand=True)
 
-        self.enc = FileList(enc_card, ORANGE, "enc", self.scrubber)
-        self.enc.pack(fill="both", expand=True, padx=8, pady=8)
+        self.enc = FileList(enc_card, ORANGE, "enc", self.scrubber, lang_var=self.lang)
+        self.enc.pack(fill="both", expand=True, padx=8, pady=(8, 4))
+
+        r["enc_btn_row"] = tk.Frame(enc_card, bg=CARD)
+        r["enc_btn_row"].pack(fill="x", padx=8, pady=(0, 8))
+        self._rndbtn(r["enc_btn_row"], self._t("start_enc"), ORANGE,
+                     lambda: self._run("enc")).pack(side="left", padx=(0, 6))
 
         # 右列：解密区
         right = tk.Frame(cols, bg=BG)
-        right.pack(side="left", fill="both", expand=True, padx=(6, 0))
+        right.grid(row=0, column=1, sticky="nsew", padx=(6, 0))
 
-        self._section_label(right, "解密区", BLUE)
-        dec_card = tk.Frame(right, bg=CARD, highlightbackground=BORDER,
-                            highlightthickness=1)
+        dec_lbl_frame = tk.Frame(right, bg=BG)
+        dec_lbl_frame.pack(fill="x", pady=(0, 5))
+        dec_dot = tk.Canvas(dec_lbl_frame, width=8, height=8, bg=BG, highlightthickness=0)
+        dec_dot.pack(side="left", pady=1)
+        dec_dot.create_oval(1, 1, 7, 7, fill=BLUE, outline="")
+        r["dec_zone_dot"] = dec_dot
+        r["dec_zone_lbl"] = tk.Label(dec_lbl_frame, text=self._t("dec_zone"),
+                                     font=(FONT, 10, "bold"), bg=BG, fg=T1)
+        r["dec_zone_lbl"].pack(side="left", padx=5)
+
+        dec_card = tk.Frame(right, bg=CARD, highlightbackground=BORDER, highlightthickness=1)
         dec_card.pack(fill="both", expand=True)
 
         self.dec = FileList(dec_card, BLUE, "dec", self.scrubber,
-                            on_json=self._json_loaded)
-        self.dec.pack(fill="both", expand=True, padx=8, pady=8)
+                            on_json=self._json_loaded, lang_var=self.lang)
+        self.dec.pack(fill="both", expand=True, padx=8, pady=(8, 4))
+
+        r["dec_btn_row"] = tk.Frame(dec_card, bg=CARD)
+        r["dec_btn_row"].pack(fill="x", padx=8, pady=(0, 8))
+        self._rndbtn(r["dec_btn_row"], self._t("start_dec"), BLUE,
+                     lambda: self._run("dec")).pack(side="left", padx=(0, 6))
+        self._rndbtn(r["dec_btn_row"], self._t("clear_map"), "#AEAEB2",
+                     self._clear_map).pack(side="left")
 
         # ── 选项行 ──
         opt_row = tk.Frame(wrap, bg=BG)
         opt_row.pack(fill="x", pady=(0, 10))
 
         self.del_json_var = tk.BooleanVar(value=False)
-        cb = tk.Checkbutton(
+        r["chk_del"] = tk.Checkbutton(
             opt_row,
-            text="解密成功后自动删除映射文件（JSON）",
+            text=self._t("del_json_opt"),
             variable=self.del_json_var,
             font=(FONT, 9), bg=BG, fg=T2,
             activebackground=BG,
             selectcolor=CARD,
             cursor="hand2"
         )
-        cb.pack(side="left")
+        r["chk_del"].pack(side="left")
 
-        # ── 操作按钮行 ──
-        btn_row = tk.Frame(wrap, bg=BG)
-        btn_row.pack(fill="x", pady=(0, 10))
-
-        for txt, col, cmd, side in [
-            ("开始加密",   ORANGE,  lambda: self._run("enc"), "left"),
-            ("开始解密",   BLUE,    lambda: self._run("dec"), "left"),
-            ("清空映射",   "#AEAEB2", self._clear_map,        "left"),
-            ("复制AI提示词", PURPLE, self._copy_prompt,       "left"),
-        ]:
-            tk.Button(
-                btn_row, text=txt, font=(FONT, 9, "bold"),
-                bg=col, fg="white",
-                activebackground=FileList._tint(col, 0.8),
-                activeforeground="white",
-                relief="flat", bd=0,
-                padx=14, pady=7,
-                cursor="hand2",
-                command=cmd
-            ).pack(side=side, padx=(0, 8))
+        # ── 复制AI提示词按钮（全宽）──
+        r["prompt_btn_frame"] = tk.Frame(wrap, bg=BG)
+        r["prompt_btn_frame"].pack(fill="x", pady=(0, 10))
+        self._rndbtn_fullwidth(r["prompt_btn_frame"], self._t("copy_prompt"), PURPLE, self._copy_prompt)
 
         # ── 状态栏 ──
         status_bar = tk.Frame(wrap, bg=CARD, highlightbackground=BORDER,
@@ -579,20 +855,108 @@ class App:
         si = tk.Frame(status_bar, bg=CARD)
         si.pack(fill="x", padx=12, pady=7)
 
+        r["status_lbl"] = tk.Label(si, text=self._t("ready"),
+                                   font=(FONT, 9), bg=CARD, fg=T2)
+        r["status_lbl"].pack(side="right", padx=(10, 0))
+        self.status = r["status_lbl"]
+
         self.pv = tk.DoubleVar()
         style = ttk.Style()
         style.theme_use("default")
         style.configure("S.Horizontal.TProgressbar",
                         troughcolor="#E5E5EA",
                         background=ORANGE,
-                        thickness=5, borderwidth=0)
+                        thickness=6, borderwidth=0)
         ttk.Progressbar(si, variable=self.pv, maximum=100,
-                        length=180, mode="determinate",
-                        style="S.Horizontal.TProgressbar").pack(side="left")
+                        mode="determinate",
+                        style="S.Horizontal.TProgressbar").pack(side="left", fill="x", expand=True)
 
-        self.status = tk.Label(si, text="就绪",
-                               font=(FONT, 9), bg=CARD, fg=T2)
-        self.status.pack(side="left", padx=10)
+        # ── 底部提示 ──
+        r["footer_lbl"] = tk.Label(self.root, text=self._t("footer"),
+                                   fg="red", font=("微软雅黑", 9))
+        r["footer_lbl"].pack(side="bottom", pady=5)
+
+    def _rndbtn_fullwidth(self, parent, text, color, cmd, pady=9, radius=10):
+        """全宽圆角按钮，随 parent 宽度自适应"""
+        import tkinter.font as tkfont
+        font_obj = (FONT, 10, "bold")
+        f = tkfont.Font(family=FONT, size=10, weight="bold")
+        th = f.metrics("linespace")
+        h = th + pady * 2
+        hover_color = FileList._tint(color, 0.82)
+
+        cv = tk.Canvas(parent, height=h, bg=parent["bg"],
+                       highlightthickness=0, cursor="hand2")
+        cv.pack(fill="x", expand=True)
+
+        current_color = [color]  # 用列表存储当前颜色，方便闭包修改
+
+        def _draw(col=None, event=None):
+            if col is None:
+                col = current_color[0]
+            else:
+                current_color[0] = col
+            # 优先用事件宽度，否则用 winfo_width
+            if event is not None and hasattr(event, 'width'):
+                w = event.width
+            else:
+                w = cv.winfo_width()
+            if w < 10:
+                return
+            r = radius
+            cv.delete("all")
+            cv.create_arc(0, 0, 2*r, 2*r, start=90, extent=90, fill=col, outline=col)
+            cv.create_arc(w-2*r, 0, w, 2*r, start=0, extent=90, fill=col, outline=col)
+            cv.create_arc(0, h-2*r, 2*r, h, start=180, extent=90, fill=col, outline=col)
+            cv.create_arc(w-2*r, h-2*r, w, h, start=270, extent=90, fill=col, outline=col)
+            cv.create_rectangle(r, 0, w-r, h, fill=col, outline=col)
+            cv.create_rectangle(0, r, w, h-r, fill=col, outline=col)
+            cv.create_text(w//2, h//2, text=text, fill="white", font=font_obj)
+
+        cv.bind("<Configure>", lambda e: _draw(event=e))
+        cv.bind("<Button-1>",  lambda e: cmd())
+        cv.bind("<Enter>",     lambda e: _draw(col=hover_color))
+        cv.bind("<Leave>",     lambda e: _draw(col=color))
+
+        # 强制延迟重绘：等布局完成后再画一次，解决初次/重建后不显示的问题
+        def _force_redraw():
+            _draw(col=color)
+            # 若宽度还没更新，再等一帧
+            if cv.winfo_width() < 10:
+                cv.after(16, _force_redraw)
+
+        cv.after(10, _force_redraw)
+
+    def _rndbtn(self, parent, text, color, cmd, padx=14, pady=7, radius=10):
+        """固定宽度圆角按钮"""
+        font_obj = (FONT, 9, "bold")
+        import tkinter.font as tkfont
+        f = tkfont.Font(family=FONT, size=9, weight="bold")
+        tw = f.measure(text)
+        th = f.metrics("linespace")
+        w = tw + padx * 2
+        h = th + pady * 2
+        hover_color = FileList._tint(color, 0.82)
+
+        cv = tk.Canvas(parent, width=w, height=h,
+                       bg=parent["bg"], highlightthickness=0, cursor="hand2")
+
+        def _draw(col):
+            cv.delete("all")
+            r = radius
+            cv.create_arc(0, 0, 2*r, 2*r, start=90, extent=90, fill=col, outline=col)
+            cv.create_arc(w-2*r, 0, w, 2*r, start=0, extent=90, fill=col, outline=col)
+            cv.create_arc(0, h-2*r, 2*r, h, start=180, extent=90, fill=col, outline=col)
+            cv.create_arc(w-2*r, h-2*r, w, h, start=270, extent=90, fill=col, outline=col)
+            cv.create_rectangle(r, 0, w-r, h, fill=col, outline=col)
+            cv.create_rectangle(0, r, w, h-r, fill=col, outline=col)
+            cv.create_text(w//2, h//2, text=text, fill="white", font=font_obj)
+
+        _draw(color)
+        cv.bind("<Button-1>", lambda e: cmd())
+        cv.bind("<Enter>",    lambda e: _draw(hover_color))
+        cv.bind("<Leave>",    lambda e: _draw(color))
+        return cv
 
     def _section_label(self, parent, text, color):
         f = tk.Frame(parent, bg=BG)
@@ -617,10 +981,9 @@ class App:
     # ── JSON 载入回调 ──
     def _json_loaded(self, n, path):
         self._upd_badge()
-        self._set_status("映射已载入，共 " + str(n) + " 条", BLUE)
-        messagebox.showinfo("载入成功",
-                            "映射文件已加载！共 " + str(n) + " 条记录。\n"
-                            "现在可将文件拖入解密区执行解密。")
+        self._set_status(self._t("map_loaded", n=n), BLUE)
+        messagebox.showinfo(self._t("map_load_ok_title"),
+                            self._t("map_load_ok_body", n=n))
 
     # ── 获取敏感词 ──
     def _words(self):
@@ -635,16 +998,14 @@ class App:
         files = zone.files
 
         if not files:
-            messagebox.showwarning(
-                "提示",
-                "请先在" + ("加密区" if mode == "enc" else "解密区") + "添加文件。"
-            )
+            key = "warn_no_file_enc" if mode == "enc" else "warn_no_file_dec"
+            messagebox.showwarning(self._t("tip"), self._t(key))
             return
 
         if mode == "enc":
             words = self._words()
             if not words:
-                messagebox.showwarning("提示", "请填写敏感词。")
+                messagebox.showwarning(self._t("tip"), self._t("warn_no_words"))
                 return
         else:
             words = []
@@ -652,24 +1013,23 @@ class App:
                 ok, mp = self.scrubber.auto_load(files[0])
                 if ok:
                     self._upd_badge()
-                    self._set_status("自动载入映射：" + os.path.basename(mp), BLUE)
+                    self._set_status(self._t("auto_load_map", name=os.path.basename(mp)), BLUE)
                 else:
                     ans = messagebox.askokcancel(
-                        "未找到映射文件",
-                        "未在文件目录找到映射文件。\n\n"
-                        "点击「确定」手动选择 JSON 映射文件。"
+                        self._t("warn_no_map_title"),
+                        self._t("warn_no_map_body")
                     )
                     if ans:
                         jp = filedialog.askopenfilename(
-                            title="选择映射文件",
-                            filetypes=[("JSON", "*.json"), ("所有文件", "*.*")]
+                            title=self._t("pick_map_title"),
+                            filetypes=[("JSON", "*.json"), ("All Files", "*.*")]
                         )
                         if jp:
                             try:
                                 self.scrubber.load(jp)
                                 self._upd_badge()
                             except Exception as ex:
-                                messagebox.showerror("错误", str(ex))
+                                messagebox.showerror(self._t("error"), str(ex))
                                 return
                         else:
                             return
@@ -677,7 +1037,7 @@ class App:
                         return
 
         self.pv.set(0)
-        self._set_status("处理中...", T2)
+        self._set_status(self._t("processing"), T2)
 
         def worker():
             def cb(cur, tot, name, st):
@@ -694,14 +1054,13 @@ class App:
         ok   = [r for r in results if r[2] is None]
         fail = [r for r in results if r[2] is not None]
         color  = ORANGE if mode == "enc" else BLUE
-        action = "加密" if mode == "enc" else "解密"
+        action = self._t("enc_done") if mode == "enc" else self._t("dec_done")
 
         self.pv.set(100)
-        self._set_status(action + " 完成：" + str(len(ok)) + " 成功，" +
-                         str(len(fail)) + " 失败", color)
+        self._set_status(action + " " + self._t("success") + "：" + str(len(ok)) + "，" +
+                         self._t("fail") + "：" + str(len(fail)), color)
         self._upd_badge()
 
-        # 解密成功后，按需删除 JSON 映射文件
         if mode == "dec" and ok and self.del_json_var.get():
             deleted = []
             for path in list(self.scrubber.json_paths):
@@ -712,27 +1071,23 @@ class App:
                 except Exception:
                     pass
             if deleted:
-                self._set_status("映射文件已删除：" + ", ".join(deleted), RED)
+                self._set_status(self._t("map_deleted", names=", ".join(deleted)), RED)
 
         lines = []
         if ok:
-            lines.append("成功 " + str(len(ok)) + " 个：")
+            lines.append(self._t("ok_n", n=len(ok)))
             for inp, out, _, mp in ok:
                 lines.append("  " + os.path.basename(inp) +
                               "  →  " + os.path.basename(out))
         if fail:
-            lines.append("\n失败 " + str(len(fail)) + " 个：")
+            lines.append("\n" + self._t("fail_n", n=len(fail)))
             for inp, _, err, _ in fail:
                 lines.append("  " + os.path.basename(inp) + "\n    " + str(err))
 
         if mode == "enc" and ok:
-            lines.append(
-                "\n建议：发给 AI 前，点击「复制AI提示词」，\n"
-                "将提示词粘贴在对话最前面，AI 会保留所有占位符不变。\n"
-                "本次映射已保存在内存，收到回传文件后直接拖入解密区即可。"
-            )
+            lines.append(self._t("suggest_prompt"))
 
-        title = action + (" 全部成功" if not fail else " 完成（含失败项）")
+        title = action + (self._t("all_ok") if not fail else self._t("partial_fail"))
         if fail:
             messagebox.showwarning(title, "\n".join(lines))
         else:
@@ -743,25 +1098,16 @@ class App:
         self.root.clipboard_clear()
         self.root.clipboard_append(AI_PROMPT)
         self.root.update()
-        messagebox.showinfo(
-            "已复制到剪贴板",
-            "使用方法：\n\n"
-            "① 在 AI 对话框最前面粘贴此提示词\n"
-            "② 再粘贴 / 上传脱敏后的文件内容\n"
-            "③ AI 将原样保留所有 [MASK_XXXXXXXX] 标记\n\n"
-            "收到 AI 回传内容后，保存为文件，\n"
-            "拖入解密区一键还原。"
-        )
+        messagebox.showinfo(self._t("copied_title"), self._t("copied_body"))
 
     # ── 清空映射 ──
     def _clear_map(self):
         self.scrubber = Scrubber()
-        # 同步给两个列表区
         self.enc.scrubber = self.scrubber
         self.dec.scrubber = self.scrubber
         self._upd_badge()
-        self._set_status("映射已清空", T2)
-        messagebox.showinfo("已清空", "映射关系已清空，可开始新任务。")
+        self._set_status(self._t("map_cleared"), T2)
+        messagebox.showinfo(self._t("map_clear_title"), self._t("map_clear_body"))
 
     # ── 辅助 ──
     def _set_status(self, text, color=None):
@@ -770,10 +1116,10 @@ class App:
     def _upd_badge(self):
         n = len(self.scrubber.mapping)
         if n:
-            self.badge.config(text="映射：" + str(n) + " 条",
+            self.badge.config(text=self._t("badge_n", n=n),
                               bg="#D1F0DA", fg=GREEN)
         else:
-            self.badge.config(text="映射：空", bg="#E5E5EA", fg=T2)
+            self.badge.config(text=self._t("badge_empty"), bg="#E5E5EA", fg=T2)
 
 
 # ==============================================================================
@@ -783,13 +1129,6 @@ class App:
 def main():
     root = TkinterDnD.Tk() if DND_OK else tk.Tk()
     App(root)
-    footer_label = tk.Label(
-    root,
-    text="与 AI 对话前，请先复制提示词，并粘贴到AI对话框。",
-    fg="red",
-    font=("微软雅黑", 9)
-    )
-    footer_label.pack(side="bottom", pady=5)
     root.mainloop()
 
 
